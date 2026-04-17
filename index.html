@@ -2,9 +2,9 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-    <title>ByteAcademy | أساسيات الحاسوب - كورس احترافي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>مواضيع اللغة التركية - الأستاذ شادي رحال</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -15,594 +15,559 @@
 
         body {
             font-family: 'Cairo', sans-serif;
-            background: linear-gradient(145deg, #eef2ff 0%, #e0e7ff 100%);
-            color: #0f172a;
-            transition: all 0.3s ease;
+            background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #533483);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             min-height: 100vh;
+            color: #fff;
+            font-size: 18px;
         }
 
-        body.dark {
-            background: linear-gradient(145deg, #0f172a 0%, #020617 100%);
-            color: #e2e8f0;
-        }
-
-        /* Glass Navbar - محسّن للجوال */
-        .glass-nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        body.dark .glass-nav {
-            background: rgba(15, 23, 42, 0.9);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0.8rem 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1.3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #2563eb, #7c3aed, #06b6d4);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: shimmer 3s infinite;
-        }
-        @keyframes shimmer {
+        @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        .logo i {
-            background: none;
-            color: #3b82f6;
-            font-size: 1.5rem;
-        }
-        .stats-bar {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            background: rgba(255,255,255,0.3);
-            padding: 0.3rem 0.8rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
-        }
-        body.dark .stats-bar {
-            background: rgba(0,0,0,0.3);
-        }
-        .progress-bar-mini {
-            width: 50px;
-            height: 4px;
-            background: #cbd5e1;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .progress-fill-mini {
-            height: 100%;
-            background: #3b82f6;
-            width: 0%;
-            transition: width 0.3s;
-        }
-        .theme-toggle {
-            background: rgba(255,255,255,0.4);
-            border: none;
-            padding: 6px 12px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.2s;
-            display: flex;
-            gap: 5px;
-            align-items: center;
-            font-size: 0.8rem;
-        }
-        body.dark .theme-toggle {
-            background: #334155;
-            color: #facc15;
-        }
 
-        /* Main layout - مرن للجوال */
-        .platform {
-            max-width: 1400px;
-            margin: 1rem auto;
-            padding: 0 1rem;
-            display: flex;
-            gap: 1.5rem;
-            position: relative;
-        }
-
-        /* زر القائمة الجانبية للجوال */
-        .mobile-menu-btn {
+        .page {
             display: none;
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 999;
-            background: linear-gradient(135deg, #3b82f6, #7c3aed);
-            border: none;
-            color: white;
-            width: 55px;
-            height: 55px;
-            border-radius: 30px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(59,130,246,0.4);
-            transition: transform 0.2s;
-        }
-        .mobile-menu-btn:active {
-            transform: scale(0.95);
+            min-height: 100vh;
         }
 
-        /* الشريط الجانبي - يظهر كقائمة منسدلة في الجوال */
-        .lessons-sidebar {
-            flex: 1.2;
-            min-width: 270px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border-radius: 1.5rem;
-            padding: 1.2rem;
-            height: fit-content;
-            position: sticky;
-            top: 85px;
-            border: 1px solid rgba(255,255,255,0.5);
-            transition: all 0.3s;
+        .page.active {
+            display: block;
         }
-        body.dark .lessons-sidebar {
-            background: rgba(30, 41, 59, 0.9);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .lessons-sidebar h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .lesson-btn {
-            width: 100%;
-            text-align: right;
-            padding: 0.9rem 0.8rem;
-            margin: 0.5rem 0;
-            border: none;
-            background: rgba(248,250,252,0.8);
-            border-radius: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Cairo';
-            font-size: 0.9rem;
-        }
-        body.dark .lesson-btn {
-            background: rgba(15, 23, 42, 0.8);
-            color: #cbd5e6;
-        }
-        .lesson-btn i { font-size: 1.1rem; color: #3b82f6; }
-        .lesson-btn.active {
-            background: linear-gradient(95deg, #3b82f6, #7c3aed);
-            color: white;
-            transform: translateX(-5px);
-            box-shadow: 0 8px 16px -8px rgba(59,130,246,0.4);
-        }
-        .lesson-btn.active i { color: white; }
 
-        /* المحتوى الرئيسي */
-        .content-card {
-            flex: 3;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.6);
-            transition: all 0.3s;
-            animation: fadeSlideUp 0.3s ease-out;
+        .header {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        @keyframes fadeSlideUp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        body.dark .content-card {
-            background: rgba(30, 41, 59, 0.85);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .lesson-header {
-            border-bottom: 2px solid rgba(59,130,246,0.3);
-            padding-bottom: 0.8rem;
-            margin-bottom: 1.2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .lesson-title {
-            font-size: 1.5rem;
+
+        .header h1 {
+            font-size: 2.5rem;
             font-weight: 800;
-            background: linear-gradient(125deg, #1e293b, #3b82f6);
+            background: linear-gradient(135deg, #fff, #f39c12);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-        }
-        body.dark .lesson-title {
-            background: linear-gradient(125deg, #facc15, #38bdf8);
-            -webkit-background-clip: text;
-        }
-        .badge-lesson {
-            background: linear-gradient(135deg, #3b82f6, #7c3aed);
-            padding: 0.2rem 1rem;
-            border-radius: 50px;
-            font-weight: 600;
-            color: white;
-            font-size: 0.75rem;
-        }
-        .lesson-content {
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-        .lesson-content p {
             margin-bottom: 0.8rem;
         }
-        .lesson-content h3 {
-            margin: 1rem 0 0.5rem 0;
-            font-size: 1.2rem;
+
+        .header h1 i {
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: #f39c12;
+            margin-left: 10px;
         }
-        .spec-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 0.8rem;
-            margin: 1rem 0;
+
+        .header .sub {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
         }
-        .spec-card {
-            background: rgba(241,245,249,0.7);
-            padding: 0.9rem;
-            border-radius: 1rem;
-            border-right: 3px solid #3b82f6;
-            font-size: 0.9rem;
+
+        .developer {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.4rem 1.5rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 50px;
+            font-size: 0.95rem;
         }
-        body.dark .spec-card {
-            background: rgba(15,23,42,0.6);
-        }
-        .highlight {
-            background: #fef9c3;
-            padding: 0.5rem 0.8rem;
-            border-radius: 14px;
+
+        .developer span {
+            color: #f39c12;
             font-weight: bold;
-            margin: 0.8rem 0;
-            font-size: 0.9rem;
         }
-        body.dark .highlight {
-            background: #334155;
-            color: #fde047;
-        }
+
         .nav-buttons {
             display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-            gap: 1rem;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 2rem;
         }
+
         .nav-btn {
-            background: rgba(226,232,240,0.8);
+            padding: 1rem 2.5rem;
             border: none;
-            padding: 0.7rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 700;
+            border-radius: 60px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            font-weight: bold;
             cursor: pointer;
-            transition: 0.2s;
-            font-family: 'Cairo';
-            font-size: 0.9rem;
-            flex: 1;
-            text-align: center;
-        }
-        .nav-btn-primary {
-            background: linear-gradient(95deg, #3b82f6, #7c3aed);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.1);
             color: white;
-            box-shadow: 0 4px 12px rgba(59,130,246,0.3);
-        }
-        .nav-btn:active {
-            transform: scale(0.97);
-        }
-        .shortcut-hint {
-            font-size: 0.65rem;
-            opacity: 0.6;
-            margin-top: 12px;
-            text-align: center;
-        }
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            font-size: 0.75rem;
-            color: #64748b;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* استعلامات الوسائط للجوال */
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 0.6rem 1rem;
+        .nav-btn.active {
+            background: #f39c12;
+            color: #1a1a2e;
+            border-color: #f39c12;
+        }
+
+        .nav-btn:hover {
+            background: #f39c12;
+            color: #1a1a2e;
+            transform: scale(1.02);
+        }
+
+        .section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 2.5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            padding-right: 1rem;
+            border-right: 6px solid #f39c12;
+            display: inline-block;
+        }
+
+        .section-title i {
+            margin-left: 12px;
+            color: #f39c12;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            animation: fadeInUp 0.6s ease backwards;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(243, 156, 18, 0.5);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            .logo {
-                font-size: 1.1rem;
-            }
-            .stats-bar {
-                font-size: 0.7rem;
-                padding: 0.2rem 0.6rem;
-            }
-            .progress-bar-mini {
-                width: 40px;
-            }
-            .platform {
-                padding: 0 0.8rem;
-                margin: 0.8rem auto;
-            }
-            .content-card {
-                padding: 1.2rem;
-            }
-            .lesson-title {
-                font-size: 1.3rem;
-            }
-            .badge-lesson {
-                font-size: 0.7rem;
-                padding: 0.2rem 0.8rem;
-            }
-            .lesson-content {
-                font-size: 0.95rem;
-            }
-            .spec-grid {
-                grid-template-columns: 1fr;
-            }
-            .nav-btn {
-                padding: 0.6rem 1rem;
-                font-size: 0.85rem;
-            }
-            .mobile-menu-btn {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .lessons-sidebar {
-                position: fixed;
-                top: 0;
-                right: -280px;
-                height: 100vh;
-                width: 280px;
-                z-index: 1050;
-                transition: right 0.3s ease;
-                border-radius: 0;
-                padding-top: 70px;
-                overflow-y: auto;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(20px);
-            }
-            body.dark .lessons-sidebar {
-                background: rgba(15, 23, 42, 0.98);
-            }
-            .lessons-sidebar.open {
-                right: 0;
-                box-shadow: -5px 0 30px rgba(0,0,0,0.3);
-            }
-            .overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.5);
-                z-index: 1040;
-                display: none;
-            }
-            .overlay.active {
-                display: block;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        @media (max-width: 480px) {
-            .nav-container {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-            .stats-bar span:not(.progress-bar-mini) {
-                display: inline;
-            }
-            .theme-toggle span {
-                display: none;
-            }
-            .theme-toggle {
-                padding: 6px 10px;
-            }
-            .lesson-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+        .card-header {
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.2), rgba(255, 255, 255, 0.05));
+            padding: 1.8rem 1.5rem;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-header i {
+            font-size: 2.3rem;
+            position: absolute;
+            bottom: -20px;
+            left: 20px;
+            background: #f39c12;
+            color: #1a1a2e;
+            padding: 12px;
+            border-radius: 50%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header h3 {
+            font-size: 1.4rem;
+            margin-right: 65px;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .card-header .topic-number {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-right: 65px;
+        }
+
+        .card-body {
+            padding: 1.8rem 1.5rem 1rem;
+        }
+
+        .card-body p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            font-size: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-footer {
+            padding: 1rem 1.5rem 1.5rem;
+            display: flex;
+            gap: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 0.5rem;
+        }
+
+        .btn-icon {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.8rem;
+            border-radius: 16px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .btn-icon i {
+            font-size: 1.1rem;
+        }
+
+        .btn-icon:hover {
+            background: #f39c12;
+            border-color: #f39c12;
+            transform: scale(1.03);
+            color: #1a1a2e;
+        }
+
+        .modal-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal-page.active {
+            display: block;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            min-height: 100vh;
+            padding: 2.5rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            background: #e74c3c;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.6rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s;
+            z-index: 2001;
+            border: none;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+            background: #c0392b;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: #f39c12;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 4px solid #f39c12;
+            display: inline-block;
+        }
+
+        .modal-text {
+            line-height: 2;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.92);
+            margin: 2rem 0;
+            white-space: pre-wrap;
+            word-break: break-word;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .btn-share {
+            min-width: 200px;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 60px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s;
+            background: #2980b9;
+            color: white;
+        }
+
+        .btn-share:hover {
+            background: #3498db;
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .header h1 { font-size: 1.6rem; }
+            .cards-grid { gap: 1.2rem; grid-template-columns: 1fr; }
+            .modal-title { font-size: 1.5rem; }
+            .modal-text { font-size: 1rem; padding: 1.2rem; }
+            .btn-icon { font-size: 0.85rem; }
+            .nav-btn { padding: 0.7rem 1.5rem; font-size: 0.95rem; }
+            .section-title { font-size: 1.5rem; }
+            .card-header h3 { font-size: 1.2rem; }
+            .btn-share { min-width: 160px; padding: 0.8rem 1.5rem; font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="glass-nav">
-    <div class="nav-container">
-        <div class="logo">
-            <i class="fas fa-brain"></i>
-            <span>Byte<span style="color:#7c3aed">Academy</span></span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <div class="stats-bar">
-                <i class="fas fa-chalkboard-user"></i>
-                <span id="completedCounter">0</span>/<span id="totalLessons">7</span>
-                <div class="progress-bar-mini">
-                    <div class="progress-fill-mini" id="miniProgress"></div>
-                </div>
-            </div>
-            <button class="theme-toggle" id="darkModeBtn">
-                <i class="fas fa-moon"></i> <span>داكن</span>
-            </button>
-        </div>
+<!-- الصفحة الرئيسية -->
+<div id="page1" class="page active">
+    <div class="header">
+        <h1><i class="fas fa-book-open"></i> مواضيع اللغة التركية</h1>
+        <div class="sub">📖 للأستاذ شادي رحال</div>
+        <div class="developer">💻 المبرمج و المطور: <span>بهاء الحسين</span></div>
+    </div>
+    <div class="nav-buttons">
+        <button class="nav-btn active" id="goToPage1"><i class="fas fa-star"></i> المواضيع الأساسية</button>
+        <button class="nav-btn" id="goToPage2"><i class="fas fa-exclamation-triangle"></i> مواضيع مهمة ومتوقعة</button>
+    </div>
+    <div class="section">
+        <h2 class="section-title"><i class="fas fa-star"></i> المواضيع الأساسية</h2>
+        <div class="cards-grid" id="mainTopicsGrid"></div>
     </div>
 </div>
 
-<button class="mobile-menu-btn" id="mobileMenuToggle"><i class="fas fa-bars"></i></button>
-<div class="overlay" id="overlay"></div>
-
-<div class="platform">
-    <div class="lessons-sidebar" id="sidebar">
-        <h3><i class="fas fa-book-open"></i> الدروس</h3>
-        <div id="lessonsList"></div>
+<!-- الصفحة الثانية -->
+<div id="page2" class="page">
+    <div class="header">
+        <h1><i class="fas fa-exclamation-triangle"></i> مواضيع مهمة ومتوقعة</h1>
+        <div class="sub">📖 للأستاذ شادي رحال</div>
+        <div class="developer">💻 المبرمج و المطور: <span>بهاء الحسين</span></div>
     </div>
-    <div class="content-card" id="mainContent">
-        <div class="lesson-header">
-            <div class="lesson-title" id="dynamicTitle"></div>
-            <div class="badge-lesson" id="dynamicBadge"></div>
-        </div>
-        <div class="lesson-content" id="dynamicContent"></div>
-        <div class="nav-buttons">
-            <button id="prevBtn" class="nav-btn"><i class="fas fa-arrow-right"></i> السابق</button>
-            <button id="nextBtn" class="nav-btn nav-btn-primary">التالي <i class="fas fa-arrow-left"></i></button>
-        </div>
-        <div class="shortcut-hint"><i class="fas fa-keyboard"></i> اضغط ← → للتنقل</div>
+    <div class="nav-buttons">
+        <button class="nav-btn" id="goToPage1b"><i class="fas fa-star"></i> المواضيع الأساسية</button>
+        <button class="nav-btn active" id="goToPage2b"><i class="fas fa-exclamation-triangle"></i> مواضيع مهمة ومتوقعة</button>
+    </div>
+    <div class="section">
+        <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> مواضيع مهمة ومتوقعة</h2>
+        <div class="cards-grid" id="expectedTopicsGrid"></div>
     </div>
 </div>
-<footer>
-    <i class="fas fa-laptop-code"></i> كورس أساسيات الحاسوب — تجربة متجاوبة بالكامل
-</footer>
+
+<div id="topicModal" class="modal-page">
+    <div class="modal-content">
+        <button class="close-modal" id="closeModalBtn"><i class="fas fa-times"></i></button>
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <div class="modal-text" id="modalText"></div>
+        <div class="modal-actions">
+            <button class="btn-share" id="shareBtn"><i class="fas fa-share-alt"></i> مشاركة الموضوع</button>
+        </div>
+    </div>
+</div>
 
 <script>
-    // المحتوى الأصلي كما هو من ملف PDF
-    const lessons = [
-        { id: 1, title: "ما هو الحاسوب؟", badge: "المقدمة", content: `<p><strong>الحاسوب</strong> هو جهاز إلكتروني رقمي مصمم لاستقبال البيانات ومعالجتها وتخزينها وإخراجها بسرعة فائقة الدقة. إنه أداة متعددة الاستخدامات تعمل وفق مجموعة من التعليمات المبرمجة مسبقاً تُعرف بالبرامج، وتمكن المستخدم من تنفيذ مهام لا حصر لها بكفاءة عالية.</p><h3>🔄 معالجة البيانات</h3><ul><li><strong>استقبال البيانات:</strong> يستقبل الحاسوب البيانات من المستخدم عبر وحدات الإدخال المختلفة كلوحة المفاتيح والفأرة والميكروفون والماسح الضوئي.</li><li><strong>معالجة البيانات:</strong> تتولى وحدة المعالجة المركزية (CPU) تحليل البيانات المدخلة وتحويلها إلى نتائج مفيدة.</li><li><strong>تخزين البيانات:</strong> يحتفظ الحاسوب بالبيانات إما مؤقتاً في RAM أو بشكل دائم على وحدات التخزين.</li><li><strong>إخراج النتائج:</strong> يعرض الحاسوب النتائج عبر وحدات الإخراج كالشاشة والطابعة.</li></ul><p>لقد شهد الحاسوب تطوراً هائلاً منذ اختراعه؛ فقد بدأ في الأربعينيات كآلات ضخمة تملأ غرفاً، وصولاً إلى الهواتف الذكية التي نحملها اليوم.</p>` },
-        { id: 2, title: "المكونات المادية (Hardware)", badge: "الهيكل العظمي", content: `<p>المكونات المادية هي كل ما يمكن لمسه ورؤيته في الحاسوب. تتقسم إلى فئات رئيسية:</p><div class="spec-grid"><div class="spec-card"><strong>🖥️ اللوحة الأم</strong><br>تربط جميع المكونات وتتيح التواصل بينها.</div><div class="spec-card"><strong>💾 وحدات التخزين</strong><br>HDD/SSD لحفظ البيانات بشكل دائم.</div><div class="spec-card"><strong>🧠 الذاكرة العشوائية RAM</strong><br>ذاكرة مؤقتة وسريعة تُمحى عند الإطفاء.</div><div class="spec-card"><strong>⚙️ وحدة المعالجة المركزية CPU</strong><br>عقل الحاسوب ينفذ الأوامر والعمليات.</div></div><h3>⌨️ وحدات الإدخال والإخراج</h3><p><strong>الإدخال:</strong> لوحة مفاتيح، فأرة، ماسح ضوئي، ميكروفون، كاميرا.<br><strong>الإخراج:</strong> شاشة، طابعة، سماعات، جهاز عرض.</p>` },
-        { id: 3, title: "تفصيل المكونات", badge: "CPU, RAM, GPU", content: `<h3>⚙️ وحدة المعالجة المركزية (CPU)</h3><p>تقاس بالجيجاهرتز (GHz) وعدد الأنوية (Cores). المعالجات الحديثة تحتوي على 16 نواة أو أكثر.</p><h3>🧠 الذاكرة العشوائية (RAM)</h3><p>تقاس بالجيجابايت (GB)، 8GB للاستخدام العادي، 16GB للمهام الاحترافية.</p><h3>🎮 بطاقة الرسوميات (GPU)</h3><p>متخصصة في معالجة البيانات المرئية، ضرورية للألعاب والتصميم والذكاء الاصطناعي.</p><div class='highlight'><strong>HDD vs SSD:</strong> SSD أسرع بكثير (3500 MB/s)، صامت ومتين. HDD سعة أكبر بسعر أقل.</div>` },
-        { id: 4, title: "المكونات البرمجية", badge: "Software", content: `<p>البرمجيات هي الروح التي تمنح الحاسوب حياته. تنقسم إلى:</p><ul><li><strong>نظام التشغيل:</strong> يدير موارد الحاسوب. أمثلة: Windows، macOS، Linux، Android، iOS.</li><li><strong>برامج التطبيقات:</strong> مهام محددة مثل Word، Excel، Chrome، Photoshop.</li><li><strong>برامج المساعدة:</strong> أدوات صيانة مثل مكافحة الفيروسات وWinRAR.</li></ul><p>نظام التشغيل هو الوسيط بين المستخدم والمكونات المادية.</p>` },
-        { id: 5, title: "أنواع الحواسيب", badge: "تنوع الاحتياجات", content: `<div class="spec-grid"><div class="spec-card"><strong>🖥️ مكتبي</strong><br>أداء عالٍ، قابل للترقية</div><div class="spec-card"><strong>💻 محمول</strong><br>مرونة وتنقل</div><div class="spec-card"><strong>📡 خادم Server</strong><br>يعمل 24/7</div><div class="spec-card"><strong>🚀 محطة عمل</strong><br>للهندسة والجرافيك</div><div class="spec-card"><strong>📱 أجهزة ذكية</strong><br>هواتف وأجهزة لوحية</div><div class="spec-card"><strong>⚡ حواسيب عملاقة</strong><br>لمحاكاة المناخ والفضاء</div></div>` },
-        { id: 6, title: "مجالات استخدام الحاسوب", badge: "الحاسوب في حياتنا", content: `<ul><li><strong>📚 التعليم:</strong> منصات إلكترونية، فصول افتراضية.</li><li><strong>💼 الأعمال:</strong> إدارة قواعد البيانات، التجارة الإلكترونية.</li><li><strong>🎮 الترفيه:</strong> ألعاب، أفلام، تصميم جرافيكي.</li><li><strong>📡 الاتصالات:</strong> إنترنت، بريد إلكتروني، وسائل تواصل.</li><li><strong>🔬 الطب والبحث:</strong> تشخيص بالذكاء الاصطناعي، جراحة روبوتية.</li></ul><div class='highlight'>الحاسوب أصبح ركيزة أساسية في الحياة العصرية.</div>` },
-        { id: 7, title: "خطة التعلم", badge: "الختام", content: `<h3>📌 خلاصة الرحلة</h3><p>فهم مكونات الحاسوب وأنواعه هو المفتاح لاستثماره بكفاءة.</p><div class='spec-grid'><div class='spec-card'><strong>🎯 ابدأ بالأساسيات</strong><br>افهم التعريف والمكونات</div><div class='spec-card'><strong>🛠️ طبق عملياً</strong><br>جرّب تركيب الأجهزة</div><div class='spec-card'><strong>📈 واكب التطور</strong><br>تابع المستجدات التقنية</div><div class='spec-card'><strong>🎓 توسّع في التخصص</strong><br>برمجة، شبكات، أمن سيبراني</div></div><p style="text-align:center; margin-top:1rem;">💡 "الحاسوب هو الآلة الأكثر مرونة التي ابتكرها الإنسان"</p>` }
+    const mainTopics = [
+        { id: 1, title: "Manavda - محادثة في السوق", content: `Manavda \nMüşteri: Merhaba. Domatesin kilosu ne kadar? \nManav: Merhaba, hoş geldiniz. Domatesin kilosu 30 lira. \nMüşteri: Çok pahalıymış. Daha ucuzu var mı? \nManav: Evet, şu taraftakiler 25 lira. \nMüşteri: Tamam, bir kilo domates alayım. Muz ne kadar? \nManav: Muzun kilosu 40 lira. \nMüşteri: Yarım kilo muz ve bir kilo elma da alayım. \nManav: Başka bir şey ister misiniz? \nMüşteri: Salatalık taze mi? \nManav: Evet, bugün geldi. Çok taze. \nMüşteri: O zaman yarım kilo salatalık ekleyin lütfen. \nManav: Tabii. Hepsi 110 lira tuttu. \nMüşteri: Buyurun. Teşekkür ederim. \nManav: Ben teşekkür ederim. İyi günler!` },
+        { id: 2, title: "Restoranda Diyalog - محادثة في المطعم", content: `Restoranda Diyalog \nGarson: Hoş geldiniz efendim. Buyurun, ne alırsınız? \nMüşteri: Merhaba, menüyü alabilir miyim? \nGarson: Tabii efendim, buyurun. \nMüşteri: Bugün ne tavsiye edersiniz? \nGarson: Bugün ızgara tavuk ve mercimek çorbası tavsiye ederim. \nMüşteri: Tamam, bir mercimek çorbası ve bir porsiyon ızgara tavuk alayım. \nGarson: İçecek olarak ne alırsınız? \nMüşteri: Bir ayran lütfen. \nGarson: Başka bir şey ister misiniz? \nMüşteri: Hayır, teşekkür ederim. \nGarson: Siparişiniz birazdan hazır olacak. Afiyet olsun.` },
+        { id: 3, title: "Kış Mevsimi - فصل الشتاء", content: `Kış Mevsimi \nKış mevsimi yılın en soğuk mevsimidir. Aralık, Ocak ve Şubat aylarını kapsar. Bu mevsimde hava genellikle soğuk olur ve bazı yerlerde kar yağar. Günler kısalır, geceler uzar. \nKışın insanlar kalın kıyafetler giyerler; mont, atkı, bere ve eldiven kullanırlar. Çocuklar kar topu oynar ve kardan adam yaparlar. Bazı insanlar kayak yapmayı sever. \nKış mevsimi aynı zamanda sıcak içeceklerin mevsimidir. Çay, kahve ve sıcak çorba içmek insanı ısıtır. Evde aileyle birlikte vakit geçirmek kışın en güzel yanlarından biridir. \nBen kış mevsimini seviyorum çünkü kar manzarası çok güzel ve huzur vericidir.` },
+        { id: 4, title: "Hava Durumu - حالة الطقس", content: `Hava Durumu \nHava durumu, günlük hayatımızı doğrudan etkileyen önemli bir faktördür. İnsanlar dışarı çıkmadan önce genellikle hava durumunu kontrol ederler. Çünkü hava şartları; giyim tarzımızı, ulaşım planlarımızı ve hatta ruh halimizi bile etkileyebilir. \nÖrneğin, güneşli bir havada insanlar genellikle daha mutlu ve enerjik hissederler. Parklarda yürüyüş yapar, piknik düzenler ve açık havada vakit geçirmek isterler. Yağmurlu havalarda ise şemsiye kullanmak gerekir ve trafik yoğunluğu artabilir. \nSoğuk ve karlı günlerde ise insanlar kalın kıyafetler giyer ve evde kalmayı tercih edebilirler. \nTürkiye'de hava durumu bölgelere göre değişiklik gösterir. Karadeniz Bölgesi genellikle yağışlıdır, İç Anadolu Bölgesi'nde kışlar soğuk ve kar yağışlı geçer, Akdeniz Bölgesi'nde ise yazlar sıcak ve kuraktır. \nSonuç olarak, hava durumu insanların günlük planlarını yaparken dikkate aldığı önemli bir unsurdur.` },
+        { id: 5, title: "Benim Kişisel Özelliklerim ve Davranışlarım", content: `Benim Kişisel Özelliklerim ve Davranışlarım \nBen bir yapay zekâyım. İnsanlara yardımcı olmak için tasarlandım. En önemli özelliğim sabırlı ve saygılı olmamdır. Herkese karşı nazik bir dil kullanırım ve sorulara açık ve anlaşılır cevaplar vermeye çalışırım. \nBilgiye dayalı ve objektif olmaya önem veririm. Farklı konular hakkında bilgi sunabilir, açıklamalar yapabilir ve gerektiğinde örnekler verebilirim. Aynı zamanda tarafsız davranırım ve kimseyi yargılamam. \nSorumluluk sahibi bir yapay zekâ olarak güvenli ve doğru bilgiler paylaşmaya dikkat ederim. Kullanıcıların ihtiyaçlarını anlamaya çalışır ve onlara en uygun şekilde yardımcı olurum. \nDavranışlarım her zaman profesyonel ve yardım odaklıdır. Amacım, insanların öğrenmesine, sorunlarını çözmesine ve yeni bilgiler keşfetmesine destek olmaktır.` },
+        { id: 6, title: "Eczanede Diyaloğu - محادثة في الصيدلية", content: `Eczanede Diyaloğu \nHasta: Merhaba, iyi günler. \nEczacı: Merhaba, hoş geldiniz. Size nasıl yardımcı olabilirim? \nHasta: Başım ağrıyor ve ateşim var. Bunun için bir ilaç almak istiyorum. \nEczacı: Ne zamandır bu şikayetleriniz var? \nHasta: Dünden beri. \nEczacı: Alerjiniz var mı? \nHasta: Hayır, alerjim yok. \nEczacı: Size bir ağrı kesici ve ateş düşürücü vereyim. \nHasta: Nasıl kullanmalıyım? \nEczacı: Günde üç kez, yemeklerden sonra bir tablet alın. \nHasta: Teşekkür ederim. Ne kadar? \nEczacı: Bu ilacın fiyatı 150 lira. \nHasta: Tamam, teşekkürler. \nEczacı: Geçmiş olsun.` },
+        { id: 7, title: "Sağlıklı ve Sağlıksız Yiyecekler", content: `Yemekler sağlığımız üzerinde doğrudan etkiye sahiptir. Bu yüzden sağlıklı ve sağlıksız besinler arasındaki farkı bilmek çok önemlidir. \nSağlıklı Yiyecekler: Sebzeler (brokoli, ıspanak, havuç), Meyveler (elma, muz, portakal), Tam tahıllar, Baklagiller, Balık ve beyaz et, Kuruyemişler. \nSağlıksız Yiyecekler: Hamburger, patates kızartması, Gazlı içecekler, Aşırı şekerli tatlılar, Paketli gıdalar, Cips ve abur cubur. \nSonuç olarak, dengeli ve düzenli beslenmek sağlıklı bir yaşam için çok önemlidir.` },
+        { id: 8, title: "Sağlıklı Bir Yaşam İçin Ne Yapmalı?", content: `Sağlıklı Bir Yaşam İçin Ne Yapmalı? \nSağlıklı bir yaşam sürmek herkesin amacı olmalıdır. Bunun için öncelikle dengeli beslenmek çok önemlidir. Her gün yeterli miktarda sebze, meyve, protein ve su tüketmeliyiz. \nDüzenli egzersiz yapmak da sağlıklı bir yaşamın olmazsa olmazıdır. Yürüyüş, koşu, yüzme veya bisiklet gibi aktiviteler hem fiziksel hem de zihinsel sağlığı güçlendirir. \nUyku düzeni de çok önemlidir. Günde 7-8 saat uyumak, vücudun kendini yenilemesine yardımcı olur. \nAyrıca stres yönetimi de sağlıklı yaşamın bir parçasıdır. Sonuç olarak, dengeli beslenme, düzenli egzersiz, yeterli uyku ve stres yönetimi sağlıklı bir yaşam için temel adımlardır.` }
     ];
 
-    let currentLesson = 0;
-    const STORAGE_KEY = 'byteacademy_lesson';
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if(saved && saved >= 0 && saved < lessons.length) currentLesson = parseInt(saved);
+    const expectedTopics = [
+        { id: 1, title: "Kendinizi Tanıtma - التعريف عن النفس", content: `Kendinizi tanıtınız. Adınız, yaşınız, okulunuz, hobileriniz, aileniz ve gelecekteki hedefleriniz hakkında bilgi veriniz.\n\nMerhaba! Benim adım Ahmet. On yedi yaşındayım. Suriye'de yaşıyorum ve lise son sınıf öğrencisiyim. Hobilerim kitap okumak, müzik dinlemek ve arkadaşlarımla vakit geçirmek. Ailem benim için çok önemlidir. Gelecekte doktor olmak istiyorum. Kendimi çalışkan, sorumlu ve arkadaş canlısı bir insan olarak tanımlıyorum. Hayatımı öğrenerek ve yeni şeyler keşfederek geçirmek istiyorum.\n\n📖 الكلمات الأساسية: Ad/İsim, Yaş, Öğrenci, Lise son sınıf, Hobiler, Kitap okumak, Müzik dinlemek, Arkadaşlarla vakit geçirmek, Aile, Önemli, Gelecek, Doktor, Çalışkan, Sorumlu, Arkadaş canlısı, Yaşıyorum, Tanımlıyorum, İstiyorum, Öğrenmek, Yeni şeyler keşfetmek` },
+        { id: 2, title: "En Sevdiğiniz Mevsim - فصلك المفضل", content: `En sevdiğiniz mevsimi tanıtınız. Hangi mevsimi sevdiğinizi, neden sevdiğinizi ve bu mevsimde neler yapmayı sevdiğinizi açıklayınız.\n\nBenim en sevdiğim mevsim ilkbahardır. İlkbaharda hava genellikle ılık ve güneşlidir. Doğadaki çiçekler açar, ağaçlar yeşerir ve kuşlar cıvıldar. Bu mevsimde parkta yürümeyi, bisiklete binmeyi ve arkadaşlarımla piknik yapmayı çok severim. İlkbahar bana enerji, mutluluk ve huzur verir. Bu yüzden hayatımda en sevdiğim mevsim ilkbahardır.\n\n📖 الكلمات الأساسية: Mevsim, İlkbahar, Hava, Ilık, Güneşli, Doğa, Çiçekler, Ağaçlar, Kuşlar, Yürümek, Bisiklete binmek, Piknik yapmak, Enerji, Mutluluk, Huzur, En sevdiğim, Bu yüzden, Genellikle` },
+        { id: 3, title: "Sağlığınızı Nasıl Koruyorsunuz - كيف تحافظ على صحتك", content: `Sağlığınızı nasıl koruduğunuzu anlatınız. Sağlıklı alışkanlıklarınız, spor ve beslenme hakkında bilgi veriniz.\n\nSağlığım benim için çok önemlidir. Her gün düzenli olarak yürüyüş yaparım ve spor yapmayı severim. Sağlıklı beslenmeye dikkat ederim; sebze, meyve, su ve proteinli yiyecekler tüketirim. Uykuma özen gösteririm ve stresimi azaltmaya çalışırım. Sigara ve abur cuburdan uzak dururum. Bu alışkanlıklarım beni güçlü, enerjik ve mutlu yapar. Sağlıklı olmak hayatımda çok önemlidir.\n\n📖 الكلمات الأساسية: Sağlık, Beslenme, Sebze, Meyve, Protein, Yürüyüş, Spor yapmak, Alışkanlık, Uyku, Sigara, Abur cubur, Uzak durmak, Güçlü, Enerjik, Mutlu, Önemli, Korurum, Özen gösteririm, Çalışırım` },
+        { id: 4, title: "En Sevdiğiniz Özel Gün - مناسبتك المفضلة", content: `En sevdiğiniz özel günü veya kutlamayı anlatınız. Hangi günü sevdiğinizi, nasıl kutladığınızı ve neden önemli olduğunu açıklayınız.\n\nBenim en sevdiğim özel gün doğum günümdür. Her yıl ailem ve arkadaşlarımla birlikte kutlarım. Bu gün pastamızı keser, hediyelerimizi açar ve eğlenceli oyunlar oynarız. Ayrıca güzel yemekler yer ve birlikte vakit geçiririz. Doğum günüm bana mutluluk ve sevgi hissettirir. Arkadaşlarımı görmek ve eğlenmek için harika bir fırsattır. Bu yüzden doğum günüm çok önemlidir.\n\n📖 الكلمات الأساسية: Özel gün, Kutlama, Doğum günü, Pasta, Kesmek, Hediyeler, Açmak, Oyunlar oynamak, Aile, Arkadaşlar, Birlikte, Güzel/Lezzetli, Eğlenceli, Mutluluk, Sevgi, Harika bir fırsat, Ayrıca, Bu yüzden` },
+        { id: 5, title: "En Sevdiğiniz Tatil - عطلتك المفضلة", content: `En sevdiğiniz tatili anlatınız. Hangi tatili sevdiğinizi, neden sevdiğinizi ve tatilde neler yaptığınızı açıklayınız.\n\nBenim en sevdiğim tatil yaz tatilidir. Yaz tatilinde sıcak havayı ve güneşi çok severim. Ailemle denize giderim, yüzme ve güneşlenme yaparım. Ayrıca arkadaşlarımla piknik yapar ve güzel yemekler yeriz. Bu tatil bana rahatlama ve mutluluk verir. Yaz tatilinde hem eğleniyorum hem de dinleniyorum. Bu yüzden yaz tatili benim en sevdiğim tatildir.\n\n📖 الكلمات الأساسية: Tatil, Yaz tatili, Vakit, Sıcak, Hava, Güneş, Deniz, Yüzme, Güneşlenme, Piknik yapmak, Rahatlama, Mutluluk, Eğlenmek, Dinlenmek, Bu yüzden, Ayrıca, Hem... hem de` }
+    ];
 
-    function renderSidebar() {
-        const container = document.getElementById('lessonsList');
-        container.innerHTML = '';
-        lessons.forEach((lesson, idx) => {
-            const btn = document.createElement('button');
-            btn.classList.add('lesson-btn');
-            if(idx === currentLesson) btn.classList.add('active');
-            btn.innerHTML = `<i class="fas fa-circle-play"></i> ${lesson.title} <span style="margin-right:auto; font-size:0.65rem;">${lesson.badge}</span>`;
-            btn.addEventListener('click', () => {
-                currentLesson = idx;
-                localStorage.setItem(STORAGE_KEY, currentLesson);
-                renderSidebar();
-                renderContent();
-                updateStats();
-                if(window.innerWidth <= 768) {
-                    document.getElementById('sidebar').classList.remove('open');
-                    document.getElementById('overlay').classList.remove('active');
-                }
-            });
-            container.appendChild(btn);
+    let currentTopic = null;
+    let currentSource = null;
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function renderCards(containerId, topicsArray) {
+        const grid = document.getElementById(containerId);
+        if (!grid) return;
+        grid.innerHTML = '';
+        topicsArray.forEach((topic, index) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.style.animationDelay = `${index * 0.05}s`;
+            card.setAttribute('data-id', topic.id);
+            let shortContent = topic.content.substring(0, 120) + (topic.content.length > 120 ? '...' : '');
+            card.innerHTML = `
+                <div class="card-header">
+                    <i class="fas fa-scroll"></i>
+                    <h3>${escapeHtml(topic.title)}</h3>
+                    <div class="topic-number">الموضوع ${topic.id}</div>
+                </div>
+                <div class="card-body">
+                    <p>${escapeHtml(shortContent)}</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn-icon open-topic" data-id="${topic.id}"><i class="fas fa-eye"></i> قراءة</button>
+                    <button class="btn-icon share-topic" data-id="${topic.id}"><i class="fas fa-share-alt"></i> مشاركة</button>
+                </div>
+            `;
+            grid.appendChild(card);
         });
     }
 
-    function renderContent() {
-        const lesson = lessons[currentLesson];
-        document.getElementById('dynamicTitle').innerHTML = lesson.title;
-        document.getElementById('dynamicBadge').innerHTML = lesson.badge;
-        const contentDiv = document.getElementById('dynamicContent');
-        contentDiv.style.opacity = '0';
-        setTimeout(() => {
-            contentDiv.innerHTML = lesson.content;
-            contentDiv.style.transition = 'opacity 0.2s';
-            contentDiv.style.opacity = '1';
-        }, 50);
-        updateStats();
+    function attachEvents() {
+        document.querySelectorAll('.open-topic').forEach(btn => {
+            btn.onclick = (e) => {
+                e.stopPropagation();
+                const id = parseInt(btn.dataset.id);
+                openTopic(id);
+            };
+        });
+        document.querySelectorAll('.share-topic').forEach(btn => {
+            btn.onclick = (e) => {
+                e.stopPropagation();
+                const id = parseInt(btn.dataset.id);
+                shareTopic(id);
+            };
+        });
+        document.querySelectorAll('.card').forEach(card => {
+            card.onclick = (e) => {
+                if (e.target.closest('.btn-icon')) return;
+                const id = parseInt(card.dataset.id);
+                openTopic(id);
+            };
+        });
     }
 
-    function updateStats() {
-        const percent = ((currentLesson + 1) / lessons.length) * 100;
-        document.getElementById('miniProgress').style.width = `${percent}%`;
-        document.getElementById('completedCounter').innerText = currentLesson + 1;
-        document.getElementById('totalLessons').innerText = lessons.length;
-    }
-
-    document.getElementById('prevBtn').addEventListener('click', () => {
-        if(currentLesson > 0) {
-            currentLesson--;
-            localStorage.setItem(STORAGE_KEY, currentLesson);
-            renderSidebar();
-            renderContent();
-        }
-    });
-    document.getElementById('nextBtn').addEventListener('click', () => {
-        if(currentLesson < lessons.length - 1) {
-            currentLesson++;
-            localStorage.setItem(STORAGE_KEY, currentLesson);
-            renderSidebar();
-            renderContent();
+    function getTopicById(id) {
+        if (currentSource === 'main') {
+            return mainTopics.find(t => t.id === id);
         } else {
-            alert("🎉 تهانينا! أكملت جميع الدروس.");
+            return expectedTopics.find(t => t.id === id);
         }
-    });
-
-    window.addEventListener('keydown', (e) => {
-        if(e.key === 'ArrowLeft') document.getElementById('nextBtn').click();
-        if(e.key === 'ArrowRight') document.getElementById('prevBtn').click();
-    });
-
-    // Dark mode
-    const darkBtn = document.getElementById('darkModeBtn');
-    darkBtn.addEventListener('click', () => {
-        document.body.classList.toggle('dark');
-        const icon = darkBtn.querySelector('i');
-        const span = darkBtn.querySelector('span');
-        if(document.body.classList.contains('dark')) {
-            icon.className = 'fas fa-sun';
-            span.innerText = 'فاتح';
-            localStorage.setItem('darkMode', 'true');
-        } else {
-            icon.className = 'fas fa-moon';
-            span.innerText = 'داكن';
-            localStorage.setItem('darkMode', 'false');
-        }
-    });
-    if(localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark');
-        document.querySelector('#darkModeBtn i').className = 'fas fa-sun';
-        document.querySelector('#darkModeBtn span').innerText = 'فاتح';
     }
 
-    // Mobile menu
-    const mobileBtn = document.getElementById('mobileMenuToggle');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    mobileBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('open');
-        overlay.classList.toggle('active');
-    });
-    overlay.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-        overlay.classList.remove('active');
-    });
+    function openTopic(id) {
+        const topic = getTopicById(id);
+        if (!topic) return;
+        currentTopic = topic;
+        document.getElementById('modalTitle').textContent = topic.title;
+        document.getElementById('modalText').textContent = topic.content;
+        document.getElementById('topicModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 
-    renderSidebar();
-    renderContent();
-    updateStats();
+    async function shareTopic(id) {
+        const topic = getTopicById(id);
+        if (!topic) return;
+        const text = `${topic.title}\n\n${topic.content}`;
+        if (navigator.share) {
+            try { await navigator.share({ title: topic.title, text: text }); } catch(e) {}
+        } else {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            alert(`📋 تم نسخ "${topic.title}" إلى الحافظة`);
+        }
+    }
+
+    function showPage(pageId, source) {
+        document.getElementById('page1').classList.remove('active');
+        document.getElementById('page2').classList.remove('active');
+        document.getElementById(pageId).classList.add('active');
+        currentSource = source;
+        if (source === 'main') {
+            renderCards('mainTopicsGrid', mainTopics);
+        } else {
+            renderCards('expectedTopicsGrid', expectedTopics);
+        }
+        attachEvents();
+    }
+
+    document.getElementById('goToPage1').onclick = () => showPage('page1', 'main');
+    document.getElementById('goToPage1b').onclick = () => showPage('page1', 'main');
+    document.getElementById('goToPage2').onclick = () => showPage('page2', 'expected');
+    document.getElementById('goToPage2b').onclick = () => showPage('page2', 'expected');
+
+    document.getElementById('closeModalBtn').onclick = () => {
+        document.getElementById('topicModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    };
+    document.getElementById('topicModal').onclick = (e) => {
+        if (e.target === document.getElementById('topicModal')) {
+            document.getElementById('topicModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    };
+    document.getElementById('shareBtn').onclick = () => { if (currentTopic) shareTopic(currentTopic.id); };
+
+    showPage('page1', 'main');
 </script>
 </body>
 </html>
